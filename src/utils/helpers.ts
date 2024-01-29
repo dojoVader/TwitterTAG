@@ -1,4 +1,4 @@
-import {configuration} from "../constant/config";
+
 
 
 export function dom(dom: string, attrib: any, cb?: Function) {

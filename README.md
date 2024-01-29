@@ -1,1 +1,1 @@
-## WondrAI Chrome Extension
+## Faxmail

@@ -1,7 +1,7 @@
 {
-  "name": "TwitterTAG",
+  "name": "Faxmail",
   "version": "1.0.0",
-  "description": "A Simple Twitter extension that allows you tag and allow you export/import taggings",
+  "description": "A Chrome extension for Faxmail to help create temporary emails",
   "manifest_version": 3,
   "icons": {
     "16": "icon.png",
@@ -19,7 +19,6 @@
     "activeTab",
     "tabs"
   ],
-  "options_page": "options.html",
   "background": {
     "service_worker": "background.js"
   },
