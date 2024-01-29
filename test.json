@@ -1,0 +1,1214 @@
+{
+  "subflows": [
+    {
+      "ame": "ChampioHoodie",
+      "flow": [
+        {
+          "id": 1,
+          "module": "google-sheets:getCell",
+          "versio": 2,
+          "parameters": {
+            "__IMTCO__": 587486
+          },
+          "mapper": {
+            "cell": "A2",
+            "from": "drive",
+            "select": "list",
+            "sheetId": "Prompts",
+            "spreadsheetId": "/1PvYcrFQhGPdgZvlglgCiBbJwyvgKmosO-cPbm1G9Wdg",
+            "valueRederOptio": "FORMATTED_VALUE",
+            "dateTimeRederOptio": "FORMATTED_STRIG"
+          },
+          "metadata": {
+            "desiger": {
+              "x": 0,
+              "y": 0
+            },
+            "restore": {
+              "expect": {
+                "from": {
+                  "label": "MyDrive"
+                },
+                "select": {
+                  "label": "Selectfromthelist"
+                },
+                "sheetId": {
+                  "label": "Prompts"
+                },
+                "spreadsheetId": {
+                  "path": [
+                    "Wodr.art"
+                  ]
+                },
+                "valueRederOptio": {
+                  "mode": "chose",
+                  "label": "Formattedvalue"
+                },
+                "dateTimeRederOptio": {
+                  "mode": "chose",
+                  "label": "Formattedstrig"
+                }
+              },
+              "parameters": {
+                "__IMTCO__": {
+                  "data": {
+                    "scoped": "true",
+                    "coectio": "google"
+                  },
+                  "label": "MyGooglecoectio(wodr.yc@gmail.com)"
+                }
+              }
+            },
+            "parameters": [
+              {
+                "ame": "__IMTCO__",
+                "type": "accout:google",
+                "label": "Coectio",
+                "required": true
+              }
+            ],
+            "expect": [
+              {
+                "ame": "select",
+                "type": "select",
+                "label": "EteraSpreadsheetadSheetID",
+                "required": true,
+                "validate": {
+                  "eum": [
+                    "map",
+                    "fromAll",
+                    "list"
+                  ]
+                }
+              },
+              {
+                "ame": "cell",
+                "type": "text",
+                "label": "Cell",
+                "required": true
+              },
+              {
+                "ame": "valueRederOptio",
+                "type": "select",
+                "label": "Valuerederoptio",
+                "validate": {
+                  "eum": [
+                    "FORMATTED_VALUE",
+                    "UFORMATTED_VALUE",
+                    "FORMULA"
+                  ]
+                }
+              },
+              {
+                "ame": "dateTimeRederOptio",
+                "type": "select",
+                "label": "Dateadtimerederoptio",
+                "validate": {
+                  "eum": [
+                    "SERIAL_UMBER",
+                    "FORMATTED_STRIG"
+                  ]
+                }
+              },
+              {
+                "ame": "from",
+                "type": "select",
+                "label": "ChooseaDrive",
+                "required": true,
+                "validate": {
+                  "eum": [
+                    "drive",
+                    "share",
+                    "team"
+                  ]
+                }
+              },
+              {
+                "ame": "spreadsheetId",
+                "type": "file",
+                "label": "SpreadsheetID",
+                "required": true
+              },
+              {
+                "ame": "sheetId",
+                "type": "select",
+                "label": "Sheetame",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "module": "opeai-gpt-3:GeerateImage",
+          "versio": 1,
+          "parameters": {
+            "__IMTCO__": 587347
+          },
+          "mapper": {
+            "": "1",
+            "size": "1024x1024",
+            "prompt": "{{1.value}}",
+            "respose_format": "url"
+          },
+          "metadata": {
+            "desiger": {
+              "x": 300,
+              "y": 0
+            },
+            "restore": {
+              "expect": {
+                "size": {
+                  "mode": "chose",
+                  "label": "1024x1024"
+                },
+                "respose_format": {
+                  "mode": "chose",
+                  "label": "URL"
+                }
+              },
+              "parameters": {
+                "__IMTCO__": {
+                  "data": {
+                    "scoped": "true",
+                    "coectio": "opeai-gpt-3"
+                  },
+                  "label": "Wodr.ycCoectio"
+                }
+              }
+            },
+            "parameters": [
+              {
+                "ame": "__IMTCO__",
+                "type": "accout:opeai-gpt-3",
+                "label": "Coectio",
+                "required": true
+              }
+            ],
+            "expect": [
+              {
+                "ame": "prompt",
+                "type": "text",
+                "label": "Prompt",
+                "required": true,
+                "validate": {
+                  "max": 1000,
+                  "mi": 0
+                }
+              },
+              {
+                "ame": "size",
+                "type": "select",
+                "label": "Size",
+                "validate": {
+                  "eum": [
+                    "256x256",
+                    "512x512",
+                    "1024x1024"
+                  ]
+                }
+              },
+              {
+                "ame": "respose_format",
+                "type": "select",
+                "label": "ResposeFormat",
+                "validate": {
+                  "eum": [
+                    "url",
+                    "b64_jso"
+                  ]
+                }
+              },
+              {
+                "ame": "",
+                "type": "iteger",
+                "label": "",
+                "validate": {
+                  "max": 10,
+                  "mi": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "module": "opeai-gpt-3:CreateCompletio",
+          "versio": 1,
+          "parameters": {
+            "__IMTCO__": 587347
+          },
+          "mapper": {
+            "echo": false,
+            "model": "text-davici-003",
+            "prompt": "Thikofaameforamadeupartistthatwouldhavepaitedithe1500s.",
+            "select": "prompt",
+            "max_tokes": "30",
+            "temperature": "1",
+            "_completios": "1"
+          },
+          "metadata": {
+            "desiger": {
+              "x": 600,
+              "y": 0
+            },
+            "restore": {
+              "expect": {
+                "echo": {
+                  "mode": "chose"
+                },
+                "model": {
+                  "mode": "chose",
+                  "label": "text-davici-003"
+                },
+                "top_p": {
+                  "collapsed": true
+                },
+                "select": {
+                  "label": "CreateaPromptCompletio"
+                },
+                "additioalParameters": {
+                  "mode": "chose"
+                }
+              },
+              "parameters": {
+                "__IMTCO__": {
+                  "data": {
+                    "scoped": "true",
+                    "coectio": "opeai-gpt-3"
+                  },
+                  "label": "Wodr.ycCoectio"
+                }
+              }
+            },
+            "parameters": [
+              {
+                "ame": "__IMTCO__",
+                "type": "accout:opeai-gpt-3",
+                "label": "Coectio",
+                "required": true
+              }
+            ],
+            "expect": [
+              {
+                "ame": "select",
+                "type": "select",
+                "label": "SelectMethod",
+                "required": true,
+                "validate": {
+                  "eum": [
+                    "chat",
+                    "prompt"
+                  ]
+                }
+              },
+              {
+                "ame": "max_tokes",
+                "type": "umber",
+                "label": "MaxTokes"
+              },
+              {
+                "ame": "temperature",
+                "type": "umber",
+                "label": "Temperature",
+                "validate": {
+                  "max": 2,
+                  "mi": 0
+                }
+              },
+              {
+                "ame": "top_p",
+                "type": "umber",
+                "label": "TopP",
+                "validate": {
+                  "max": 1,
+                  "mi": 0
+                }
+              },
+              {
+                "ame": "_completios",
+                "type": "umber",
+                "label": "umber"
+              },
+              {
+                "ame": "echo",
+                "type": "boolea",
+                "label": "Echo"
+              },
+              {
+                "ame": "additioalParameters",
+                "spec": [
+                  {
+                    "ame": "key",
+                    "type": "text",
+                    "label": "Parameterame",
+                    "required": true
+                  },
+                  {
+                    "ame": "type",
+                    "type": "select",
+                    "label": "IputType",
+                    "optios": [
+                      {
+                        "label": "Text",
+                        "value": "text",
+                        "ested": [
+                          {
+                            "ame": "value",
+                            "type": "text",
+                            "label": "ParameterValue"
+                          }
+                        ],
+                        "default": true
+                      },
+                      {
+                        "label": "umber",
+                        "value": "umber",
+                        "ested": [
+                          {
+                            "ame": "value",
+                            "type": "umber",
+                            "label": "ParameterValue"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "Boolea",
+                        "value": "boolea",
+                        "ested": [
+                          {
+                            "ame": "value",
+                            "type": "boolea",
+                            "label": "ParameterValue"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "Date",
+                        "value": "date",
+                        "ested": [
+                          {
+                            "ame": "value",
+                            "type": "date",
+                            "label": "ParameterValue"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "Ay",
+                        "value": "ay",
+                        "ested": [
+                          {
+                            "ame": "value",
+                            "type": "ay",
+                            "label": "ParameterValue"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "type": "array",
+                "label": "OtherIputParameters"
+              },
+              {
+                "ame": "model",
+                "type": "select",
+                "label": "Model",
+                "required": true
+              },
+              {
+                "ame": "prompt",
+                "type": "ay",
+                "label": "Prompt"
+              }
+            ],
+            "advaced": true
+          }
+        },
+        {
+          "id": 4,
+          "module": "opeai-gpt-3:CreateCompletio",
+          "versio": 1,
+          "parameters": {
+            "__IMTCO__": 587347
+          },
+          "mapper": {
+            "echo": false,
+            "model": "text-davici-003",
+            "prompt": "Createaproductdescriptioforahoodiewith{{1.value}}desigsi400charactersorless.Usetheword"
+            ad
+            "isteadofay&sigs.Add10relevathashtags.",
+            "select": "prompt",
+            "max_tokes": "1000",
+            "temperature": "1",
+            "_completios": "1"
+          },
+          "metadata": {
+            "desiger": {
+              "x": 900,
+              "y": 0
+            },
+            "restore": {
+              "expect": {
+                "echo": {
+                  "mode": "chose"
+                },
+                "model": {
+                  "mode": "chose",
+                  "label": "text-davici-003"
+                },
+                "top_p": {
+                  "collapsed": true
+                },
+                "select": {
+                  "label": "CreateaPromptCompletio"
+                },
+                "additioalParameters": {
+                  "mode": "chose"
+                }
+              },
+              "parameters": {
+                "__IMTCO__": {
+                  "data": {
+                    "scoped": "true",
+                    "coectio": "opeai-gpt-3"
+                  },
+                  "label": "Wodr.ycCoectio"
+                }
+              }
+            },
+            "parameters": [
+              {
+                "ame": "__IMTCO__",
+                "type": "accout:opeai-gpt-3",
+                "label": "Coectio",
+                "required": true
+              }
+            ],
+            "expect": [
+              {
+                "ame": "select",
+                "type": "select",
+                "label": "SelectMethod",
+                "required": true,
+                "validate": {
+                  "eum": [
+                    "chat",
+                    "prompt"
+                  ]
+                }
+              },
+              {
+                "ame": "max_tokes",
+                "type": "umber",
+                "label": "MaxTokes"
+              },
+              {
+                "ame": "temperature",
+                "type": "umber",
+                "label": "Temperature",
+                "validate": {
+                  "max": 2,
+                  "mi": 0
+                }
+              },
+              {
+                "ame": "top_p",
+                "type": "umber",
+                "label": "TopP",
+                "validate": {
+                  "max": 1,
+                  "mi": 0
+                }
+              },
+              {
+                "ame": "_completios",
+                "type": "umber",
+                "label": "umber"
+              },
+              {
+                "ame": "echo",
+                "type": "boolea",
+                "label": "Echo"
+              },
+              {
+                "ame": "additioalParameters",
+                "spec": [
+                  {
+                    "ame": "key",
+                    "type": "text",
+                    "label": "Parameterame",
+                    "required": true
+                  },
+                  {
+                    "ame": "type",
+                    "type": "select",
+                    "label": "IputType",
+                    "optios": [
+                      {
+                        "label": "Text",
+                        "value": "text",
+                        "ested": [
+                          {
+                            "ame": "value",
+                            "type": "text",
+                            "label": "ParameterValue"
+                          }
+                        ],
+                        "default": true
+                      },
+                      {
+                        "label": "umber",
+                        "value": "umber",
+                        "ested": [
+                          {
+                            "ame": "value",
+                            "type": "umber",
+                            "label": "ParameterValue"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "Boolea",
+                        "value": "boolea",
+                        "ested": [
+                          {
+                            "ame": "value",
+                            "type": "boolea",
+                            "label": "ParameterValue"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "Date",
+                        "value": "date",
+                        "ested": [
+                          {
+                            "ame": "value",
+                            "type": "date",
+                            "label": "ParameterValue"
+                          }
+                        ]
+                      },
+                      {
+                        "label": "Ay",
+                        "value": "ay",
+                        "ested": [
+                          {
+                            "ame": "value",
+                            "type": "ay",
+                            "label": "ParameterValue"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "type": "array",
+                "label": "OtherIputParameters"
+              },
+              {
+                "ame": "model",
+                "type": "select",
+                "label": "Model",
+                "required": true
+              },
+              {
+                "ame": "prompt",
+                "type": "ay",
+                "label": "Prompt"
+              }
+            ],
+            "advaced": true
+          }
+        },
+        {
+          "id": 9,
+          "module": "pritify:uploadAImage",
+          "versio": 1,
+          "parameters": {
+            "__IMTCO__": 587545
+          },
+          "mapper": {
+            "url": "{{2.data[].url}}",
+            "type": "url",
+            "fileame": "{{3.choices[].text}}"
+          },
+          "metadata": {
+            "desiger": {
+              "x": 1200,
+              "y": 0
+            },
+            "restore": {
+              "expect": {
+                "type": {
+                  "label": "URL"
+                }
+              },
+              "parameters": {
+                "__IMTCO__": {
+                  "data": {
+                    "scoped": "true",
+                    "coectio": "pritify"
+                  },
+                  "label": "WODRAITEAMPRITIFY"
+                }
+              }
+            },
+            "parameters": [
+              {
+                "ame": "__IMTCO__",
+                "type": "accout:pritify",
+                "label": "Coectio",
+                "required": true
+              }
+            ],
+            "expect": [
+              {
+                "ame": "fileame",
+                "type": "fileame",
+                "label": "Fileame",
+                "required": true
+              },
+              {
+                "ame": "type",
+                "type": "select",
+                "label": "UploadImageBy",
+                "required": true,
+                "validate": {
+                  "eum": [
+                    "url",
+                    "cotets"
+                  ]
+                }
+              },
+              {
+                "ame": "url",
+                "type": "url",
+                "label": "ImageURL",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "id": 14,
+          "module": "pritify:createAProduct",
+          "versio": 1,
+          "parameters": {
+            "__IMTCO__": 587545
+          },
+          "mapper": {
+            "tags": [
+              "Hoodie,Classroom"
+            ],
+            "title": "{{3.choices[].text}}-Hoodie",
+            "shopId": 5978286,
+            "variats": [
+              {
+                "id": 68853,
+                "price": "6000",
+                "is_eabled": true
+              },
+              {
+                "id": 68861,
+                "price": "6000",
+                "is_eabled": true
+              },
+              {
+                "id": 68869,
+                "price": "6000",
+                "is_eabled": true
+              },
+              {
+                "id": 68877,
+                "price": "6000",
+                "is_eabled": true
+              },
+              {
+                "id": 68885,
+                "price": "6000",
+                "is_eabled": true
+              }
+            ],
+            "descriptio": "{{4.choices[].text}}",
+            "prit_areas": [
+              {
+                "variat_ids": [
+                  71057
+                ],
+                "placeholders": [
+                  {
+                    "images": [
+                      {
+                        "x": "0.5",
+                        "y": "0.5",
+                        "id": "{{9.id}}",
+                        "agle": "360",
+                        "scale": "0.65"
+                      }
+                    ],
+                    "positio": "frot"
+                  }
+                ]
+              }
+            ],
+            "blueprit_id": 528,
+            "prit_details": {
+              "prit_o_side": "regular"
+            },
+            "prit_provider_id": 74
+          },
+          "metadata": {
+            "desiger": {
+              "x": 1500,
+              "y": 0
+            },
+            "restore": {
+              "expect": {
+                "tags": {
+                  "mode": "chose",
+                  "items": [
+                    ull
+                  ]
+                },
+                "shopId": {
+                  "mode": "chose",
+                  "label": "WodrPritify"
+                },
+                "variats": {
+                  "mode": "chose",
+                  "items": [
+                    {
+                      "id": {
+                        "mode": "chose",
+                        "label": "Black/S"
+                      },
+                      "is_eabled": {
+                        "mode": "chose"
+                      }
+                    },
+                    {
+                      "id": {
+                        "mode": "chose",
+                        "label": "Black/M"
+                      },
+                      "is_eabled": {
+                        "mode": "chose"
+                      }
+                    },
+                    {
+                      "id": {
+                        "mode": "chose",
+                        "label": "Black/L"
+                      },
+                      "is_eabled": {
+                        "mode": "chose"
+                      }
+                    },
+                    {
+                      "id": {
+                        "mode": "chose",
+                        "label": "Black/XL"
+                      },
+                      "is_eabled": {
+                        "mode": "chose"
+                      }
+                    },
+                    {
+                      "id": {
+                        "mode": "chose",
+                        "label": "Black/2XL"
+                      },
+                      "is_eabled": {
+                        "mode": "chose"
+                      }
+                    }
+                  ]
+                },
+                "prit_areas": {
+                  "mode": "chose",
+                  "items": [
+                    {
+                      "variat_ids": {
+                        "mode": "chose",
+                        "items": [
+                          {
+                            "value": {
+                              "mode": "chose",
+                              "label": "Black/3XL"
+                            }
+                          }
+                        ]
+                      },
+                      "placeholders": {
+                        "mode": "chose",
+                        "items": [
+                          {
+                            "images": {
+                              "mode": "chose",
+                              "items": [
+                                {
+                                  "id": {
+                                    "mode": "edit"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "blueprit_id": {
+                  "mode": "chose",
+                  "label": "ChampioHoodieChampio"
+                },
+                "prit_details": {
+                  "ested": {
+                    "prit_o_side": {
+                      "mode": "chose",
+                      "label": "regular"
+                    }
+                  }
+                },
+                "prit_provider_id": {
+                  "mode": "chose",
+                  "label": "IkBlot"
+                }
+              },
+              "parameters": {
+                "__IMTCO__": {
+                  "data": {
+                    "scoped": "true",
+                    "coectio": "pritify"
+                  },
+                  "label": "WODRAITEAMPRITIFY"
+                }
+              }
+            },
+            "parameters": [
+              {
+                "ame": "__IMTCO__",
+                "type": "accout:pritify",
+                "label": "Coectio",
+                "required": true
+              }
+            ],
+            "expect": [
+              {
+                "ame": "shopId",
+                "type": "select",
+                "label": "ShopID",
+                "required": true
+              },
+              {
+                "ame": "title",
+                "type": "text",
+                "label": "Title",
+                "required": true
+              },
+              {
+                "ame": "descriptio",
+                "type": "text",
+                "label": "Descriptio",
+                "required": true
+              },
+              {
+                "ame": "blueprit_id",
+                "type": "select",
+                "label": "BluepritID",
+                "required": true
+              },
+              {
+                "ame": "tags",
+                "spec": {
+                  "ame": "value",
+                  "type": "text"
+                },
+                "type": "array",
+                "label": "Tags"
+              },
+              {
+                "ame": "prit_details",
+                "spec": [
+                  {
+                    "ame": "prit_o_side",
+                    "type": "select",
+                    "label": "PritOSide",
+                    "validate": {
+                      "eum": [
+                        "regular",
+                        "mirror",
+                        "off"
+                      ]
+                    }
+                  }
+                ],
+                "type": "collectio",
+                "label": "PritDetails"
+              },
+              {
+                "ame": "prit_provider_id",
+                "type": "select",
+                "label": "PritProviderID",
+                "required": true
+              },
+              {
+                "ame": "variats",
+                "spec": {
+                  "ame": "value",
+                  "spec": [
+                    {
+                      "mode": "edit",
+                      "ame": "id",
+                      "type": "select",
+                      "label": "VariatID",
+                      "dyamic": true,
+                      "optios": [],
+                      "required": true
+                    },
+                    {
+                      "ame": "price",
+                      "type": "umber",
+                      "label": "Price",
+                      "required": true
+                    },
+                    {
+                      "ame": "is_eabled",
+                      "type": "boolea",
+                      "label": "IsEabled"
+                    }
+                  ],
+                  "type": "collectio"
+                },
+                "type": "array",
+                "label": "Variats",
+                "required": true
+              },
+              {
+                "ame": "prit_areas",
+                "spec": {
+                  "ame": "value",
+                  "spec": [
+                    {
+                      "ame": "variat_ids",
+                      "spec": {
+                        "mode": "edit",
+                        "type": "select",
+                        "dyamic": true,
+                        "optios": []
+                      },
+                      "type": "array",
+                      "label": "VariatIDs",
+                      "required": true
+                    },
+                    {
+                      "ame": "placeholders",
+                      "spec": {
+                        "spec": [
+                          {
+                            "ame": "positio",
+                            "type": "text",
+                            "label": "Positio",
+                            "required": true
+                          },
+                          {
+                            "ame": "images",
+                            "spec": {
+                              "spec": [
+                                {
+                                  "ame": "id",
+                                  "type": "select",
+                                  "label": "ID",
+                                  "dyamic": true,
+                                  "optios": [],
+                                  "required": true
+                                },
+                                {
+                                  "ame": "x",
+                                  "type": "umber",
+                                  "label": "X",
+                                  "required": true
+                                },
+                                {
+                                  "ame": "y",
+                                  "type": "umber",
+                                  "label": "Y",
+                                  "required": true
+                                },
+                                {
+                                  "ame": "scale",
+                                  "type": "umber",
+                                  "label": "Scale",
+                                  "required": true
+                                },
+                                {
+                                  "ame": "agle",
+                                  "type": "umber",
+                                  "label": "Agle",
+                                  "required": true
+                                }
+                              ],
+                              "type": "collectio"
+                            },
+                            "type": "array",
+                            "label": "Images",
+                            "required": true
+                          }
+                        ],
+                        "type": "collectio"
+                      },
+                      "type": "array",
+                      "label": "Placeholders",
+                      "required": true
+                    }
+                  ],
+                  "type": "collectio"
+                },
+                "type": "array",
+                "label": "PritAreas",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "id": 15,
+          "module": "pritify:publishAProduct",
+          "versio": 1,
+          "parameters": {
+            "__IMTCO__": 587545
+          },
+          "mapper": {
+            "tags": true,
+            "title": true,
+            "images": true,
+            "shop_id": 5978286,
+            "variats": true,
+            "product_id": "{{14.id}}",
+            "descriptio": true
+          },
+          "metadata": {
+            "desiger": {
+              "x": 1800,
+              "y": 0
+            },
+            "restore": {
+              "expect": {
+                "tags": {
+                  "mode": "chose"
+                },
+                "title": {
+                  "mode": "chose"
+                },
+                "images": {
+                  "mode": "chose"
+                },
+                "shop_id": {
+                  "mode": "chose",
+                  "label": "WodrPritify"
+                },
+                "variats": {
+                  "mode": "chose"
+                },
+                "product_id": {
+                  "mode": "edit"
+                },
+                "descriptio": {
+                  "mode": "chose"
+                }
+              },
+              "parameters": {
+                "__IMTCO__": {
+                  "data": {
+                    "scoped": "true",
+                    "coectio": "pritify"
+                  },
+                  "label": "WODRAITEAMPRITIFY"
+                }
+              }
+            },
+            "parameters": [
+              {
+                "ame": "__IMTCO__",
+                "type": "accout:pritify",
+                "label": "Coectio",
+                "required": true
+              }
+            ],
+            "expect": [
+              {
+                "mode": "edit",
+                "ame": "shop_id",
+                "type": "select",
+                "label": "ShopID",
+                "required": true
+              },
+              {
+                "ame": "title",
+                "type": "boolea",
+                "label": "Title",
+                "required": true
+              },
+              {
+                "ame": "descriptio",
+                "type": "boolea",
+                "label": "Descriptio",
+                "required": true
+              },
+              {
+                "ame": "images",
+                "type": "boolea",
+                "label": "Images",
+                "required": true
+              },
+              {
+                "ame": "variats",
+                "type": "boolea",
+                "label": "Variats",
+                "required": true
+              },
+              {
+                "ame": "tags",
+                "type": "boolea",
+                "label": "Tags",
+                "required": true
+              },
+              {
+                "ame": "product_id",
+                "type": "select",
+                "label": "ProductID",
+                "required": true
+              }
+            ]
+          }
+        }
+      ],
+      "metadata": {
+        "istat": false,
+        "versio": 1,
+        "sceario": {
+          "roudtrips": 1,
+          "maxErrors": 3,
+          "autoCommit": true,
+          "autoCommitTriggerLast": true,
+          "sequetial": false,
+          "cofidetial": false,
+          "dataloss": false,
+          "dlq": false,
+          "freshVariables": false
+        },
+        "desiger": {
+          "orphas": []
+        },
+        "zoe": "us1.make.com"
+      }
+    }
+  ],
+  "metadata": {
+    "versio": 1
+  }
+}
