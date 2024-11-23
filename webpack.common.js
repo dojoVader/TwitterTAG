@@ -8,8 +8,7 @@ module.exports = {
     config: path.resolve("src/constant/config.ts"),
     background: path.resolve("src/background/background.ts"),
     contentScript: path.resolve("src/contentScript/contentScript.tsx"),
-    popup: path.resolve("src/popup/popup.tsx"),
-   
+
   },
   module: {
     rules: [
@@ -49,6 +48,10 @@ module.exports = {
           from: path.resolve("src/static"),
           to: path.resolve("dist"),
         },
+        {
+          from: path.resolve("src/contentScript/contentScript.css"),
+          to: path.resolve("dist")
+        }
       ],
     }),
     ...getHtmlPlugins(["popup", "options"]),

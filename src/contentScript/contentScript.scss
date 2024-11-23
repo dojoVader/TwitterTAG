@@ -1,0 +1,14 @@
+.icon-edit{
+    border-color: rgb(207, 217, 222) !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+    display: flex;
+    justify-content: space-around !important;
+    align-items: center !important;
+    &:hover{
+        background-color: rgba(128, 128, 128, 0.22) !important;
+    }
+}
+.icon-div{
+    width:24px;
+    height:24px;
+}

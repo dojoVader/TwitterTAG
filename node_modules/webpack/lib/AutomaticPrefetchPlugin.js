@@ -27,7 +27,7 @@ class AutomaticPrefetchPlugin {
 				);
 			}
 		);
-		/** @type {{context: string, request: string}[] | null} */
+		/** @type {{context: string | null, request: string}[] | null} */
 		let lastModules = null;
 		compiler.hooks.afterCompile.tap("AutomaticPrefetchPlugin", compilation => {
 			lastModules = [];
@@ -45,7 +45,7 @@ class AutomaticPrefetchPlugin {
 			"AutomaticPrefetchPlugin",
 			(compilation, callback) => {
 				if (!lastModules) return callback();
-				asyncLib.forEach(
+				asyncLib.each(
 					lastModules,
 					(m, callback) => {
 						compilation.addModuleChain(

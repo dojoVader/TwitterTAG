@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"contentScript.css"}
+{"version":3,"sourceRoot":"","sources":["contentScript.scss"],"names":[],"mappings":"AAAA;EACI;EACA;EACA;EACA;EACA;;AACA;EACI;;;AAGR;EACI;EACA","file":"contentScript.css"}

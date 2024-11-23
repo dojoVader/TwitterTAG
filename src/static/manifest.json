@@ -1,7 +1,7 @@
 {
-  "name": "Faxmail",
-  "version": "1.0.0",
-  "description": "A Chrome extension for Faxmail to help create temporary emails",
+  "name": "TwitTag",
+  "version": "1.0.1",
+  "description": "A Chrome extension for X that labels Profile accounts",
   "manifest_version": 3,
   "icons": {
     "16": "icon.png",
@@ -9,15 +9,13 @@
     "128": "icon.png"
   },
   "action": {
-    "default_popup": "popup.html",
-    "default_title": "TwitterTAG",
+    "default_title": "TwitTag",
     "default_icon": "icon.png"
   },
   "permissions": [
     "storage",
-    "notifications",
-    "activeTab",
-    "tabs"
+    "clipboardRead",
+    "notifications"
   ],
   "background": {
     "service_worker": "background.js"
@@ -25,8 +23,9 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "https://x.com/*"
       ],
+      "css": ["contentScript.css"],
       "js": [
         "contentScript.js"
       ],
@@ -36,7 +35,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "asset.png", "icon.png","icons/*.svg","icons/*.png"
+        "asset.png", "icon.png"
       ],
       "matches": [
         "<all_urls>"
