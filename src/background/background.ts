@@ -17,5 +17,10 @@ chrome.runtime.onMessage.addListener((message,sender) =>{
                 active:true
             }).then()
             break;
+
+        case 'openPanel':
+            // Open the sidepanel for the extension
+            chrome.sidePanel.open({tabId: sender.tab.id}).then()
+            break;
     }
 })

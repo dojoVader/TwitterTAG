@@ -8,14 +8,19 @@
     "48": "icon.png",
     "128": "icon.png"
   },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
   "action": {
     "default_title": "TwitTag",
-    "default_icon": "icon.png"
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
   },
   "permissions": [
     "storage",
     "clipboardRead",
-    "notifications"
+    "notifications",
+    "sidePanel"
   ],
   "background": {
     "service_worker": "background.js"

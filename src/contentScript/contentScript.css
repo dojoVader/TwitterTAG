@@ -13,5 +13,8 @@
   width: 24px;
   height: 24px;
 }
+.icon-div svg {
+  fill: currentColor;
+}
 
 /*# sourceMappingURL=contentScript.css.map */

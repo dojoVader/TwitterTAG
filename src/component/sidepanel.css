@@ -1,0 +1,19 @@
+.media-img {
+  width: auto;
+  height: 150px;
+  border-radius: 12px;
+}
+
+.media-pane {
+  background: white;
+  border: 1px solid #cdd8ff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 3px 0px rgba(255, 231, 231, 0.3803921569);
+}
+
+.span-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=sidepanel.css.map */

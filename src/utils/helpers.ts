@@ -1,6 +1,8 @@
 import {localStorageGet} from "./chrome-utils";
 import {configuration} from "../constant/config";
 
+const noop = () => null;
+
 
 export function dom(dom: string, attrib: any, cb?: Function) {
     let domNode = document.createElement(dom);
@@ -15,15 +17,15 @@ export function dom(dom: string, attrib: any, cb?: Function) {
     return domNode;
 }
 
-export function q(selector: string, multiElements: boolean = false, source: HTMLElement = null): any {
+export function q(selector: string, multiElements: boolean = false, source: HTMLElement = null): HTMLElement | NodeListOf<HTMLElement> {
     if (multiElements) {
         return (source || document).querySelectorAll(selector);
     }
-    return (source || document).querySelector(selector)
+    return (source || document).querySelector(selector) as HTMLElement
 }
 
 // write a debounce function
-export function debounce(func, timeout = 300){
+export function debounce(func: { apply: (arg0: any, arg1: any[]) => void; }, timeout = 300){
 
     let timer;
     return (...args) => {
@@ -55,7 +57,7 @@ export async function generateEmailForInput(): Promise<string>{
 }
 
 export function isTwitterProfilePage(): boolean{
-    return q(TWITTER_SELECTOR);
+    return q(TWITTER_SELECTOR) !== null;
 }
 
 export type TwitterTagData = {color: string, profile: string, label: string};
@@ -94,9 +96,15 @@ export function rafAsync() {
     });
 }
 
-export async function checkElement(selector: string, source?: HTMLElement) {
+export async function checkElement(selector: string, retries: number = 50, source?: HTMLElement) {
     let querySelector = null;
+    let limit = 0;
     while (querySelector === null) {
+        limit++;
+        if(limit === retries) {
+            noop();
+            break;
+        }
         await rafAsync();
         querySelector = !source ? document.querySelector(selector) : source.querySelector(selector);
     }
@@ -112,6 +120,10 @@ export const SEARCH_TIMELINE_READ = "[aria-label='Timeline: Search timeline']";
 export const TWITTER_USER_NAME_NODE = 'div[data-testid="User-Name"]';
 export const TWITTER_USERNAME_LINK_SPAN_NODE = "a[role='link'] > div > span";
 export const TWITTER_USER_ACTION = 'button[data-testid="userActions"]';
+export const TWITTER_LD_JSON= 'script[data-testid="UserProfileSchema-test"]';
+export const TWITTER_ROOT_NODE = 'div#react-root';
+export const TWITTER_DROPDOWN_NODE = 'div[data-testid="Dropdown"]';
+
 
 
 

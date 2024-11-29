@@ -8,6 +8,8 @@ module.exports = {
     config: path.resolve("src/constant/config.ts"),
     background: path.resolve("src/background/background.ts"),
     contentScript: path.resolve("src/contentScript/contentScript.tsx"),
+    popup: path.resolve("src/popup/popup.tsx"),
+    sidepanel: path.resolve("src/sidepanel/sidepanel.tsx")
 
   },
   module: {
@@ -54,7 +56,7 @@ module.exports = {
         }
       ],
     }),
-    ...getHtmlPlugins(["popup", "options"]),
+    ...getHtmlPlugins(["popup", "options","sidepanel"]),
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
