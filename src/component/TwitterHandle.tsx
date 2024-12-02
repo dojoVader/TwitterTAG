@@ -21,7 +21,7 @@ export class TwitterHandle {
     constructor() {
         const debounced_function = debounce(async() => {
             await this.handle();
-        },500,)
+        },300,)
         const observer = new MutationObserver(debounced_function);
         observer.observe(q(TWITTER_ROOT_NODE) as HTMLElement,{
             subtree: true,

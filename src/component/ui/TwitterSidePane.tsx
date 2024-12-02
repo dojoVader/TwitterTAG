@@ -11,6 +11,8 @@ export interface TwitterSidePaneProps{
 export const TwitterSidePane = ()=> {
     const [details,setDetails] = useState<TwitterLDJSON>(null);
     const [subscribed, setSubscribed] = useState<boolean>(false);
+    const [authenticated, setAuthenticated] = useState<boolean>(false);
+    const [register,setRegister] = useState<boolean>(false);
     useEffect(() => {
         (async()=> {
             const data = await chrome.storage.local.get('currentUser');
@@ -31,12 +33,28 @@ export const TwitterSidePane = ()=> {
                     rowGap={'10'}
                     flexDirection={'column'}
                     sx={{
+                    fontSize: '1.3em',
                     padding: '2%'
                 }}>
-                <h1>Do more with Premium</h1>
-                <div>Subscribe today, and unlock the feature of posting to people's profile</div>
-                <br/>
-                    <Button variant={'contained'}>Pay with Stripe</Button>
+                    {!authenticated && (
+                        <>
+                            <h1>XTag Premium+</h1>
+                            <h3>Enjoy the premium features of TwitterTAG, with our premium version, you can sync your tagging to the cloud and also send notes to X profiles</h3>
+
+                            <br/>
+                            <p>Register & Subscribe with 4$ monthly</p>
+                            {register && (
+                                <Box display={'flex'} flexDirection={'column'} rowGap={2} sx={{padding: '2%'}}>
+                                    <TextField id="outlined-basic" label="Username" variant="outlined" />
+                                    <TextField type={'password'} id="outlined-basic" label="Password" variant="outlined" />
+
+                                </Box>
+                            )}
+                            <Button sx={{padding: '2%'}} onClick={e => setRegister(true)} variant={'contained'}>Register</Button>
+
+                        </>
+                    )}
+
                 </Box>
             )}
             {subscribed && (
