@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  width: 340px;
+  border-radius: 2px;
+}
+
+/*# sourceMappingURL=input.css.map */

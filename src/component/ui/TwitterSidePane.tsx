@@ -69,11 +69,11 @@ export const TwitterSidePane = ()=> {
                             width: '100%'
                         }}
                     >
-                        <Typography variant={'h6'} style={{padding: '1%', textAlign: 'center'}}>{details?.author?.additionalName}</Typography>
+                        <Typography variant={'h6'} style={{padding: '1%', textAlign: 'center'}}>{details?.mainEntity?.additionalName}</Typography>
                         <CardMedia
                             sx={{width: '100%'}}
                             className={'media-img'}
-                            image={details?.author?.image?.contentUrl}
+                            image={details?.mainEntity?.image?.contentUrl}
                         />
 
 

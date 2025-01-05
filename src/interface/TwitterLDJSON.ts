@@ -2,12 +2,12 @@ export interface TwitterLDJSON {
     "@context": string
     "@type": string
     dateCreated: string
-    author: Author
+    mainEntity: MainEntity
     contentRating: string
     relatedLink: string[]
 }
 
-export interface Author {
+export interface MainEntity {
     "@type": string
     additionalName: string
     description: string

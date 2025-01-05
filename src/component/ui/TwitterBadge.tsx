@@ -6,8 +6,8 @@ import {useTwitterLDStore} from "../../zustand/store.twitter";
 
 
 export const TwitterBadge = () => {
-    const {author} = useTwitterLDStore(state => state.data);
-    const {additionalName:profile} = author;
+    const {mainEntity} = useTwitterLDStore(state => state.data);
+    const {additionalName:profile} = mainEntity;
     const store = useTags(state => state);
     const {data} = store
     const [detail] = data.filter(record => record.profile === profile);

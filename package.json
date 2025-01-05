@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack --watch --progress --config webpack.dev.js",
     "build": "webpack --watch --progress --config webpack.prod.js",
-    "css": "npx tailwindcss -i ./src/contentScript/contentScript.css -o ./dist/style.css --watch"
+    "css": "npx tailwindcss -i ./src/popup/input.css -o ./src/component/popup.css --watch"
   },
   "author": "Retani Consults",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "style-loader": "^3.3.1",
+    "tailwindcss": "^3.4.17",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.4",
     "webpack": "5.94.0",

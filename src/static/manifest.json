@@ -20,31 +20,24 @@
     "storage",
     "clipboardRead",
     "notifications",
-    "sidePanel"
+    "sidePanel",
+    "tabs"
   ],
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://x.com/*"
-      ],
+      "matches": ["https://x.com/*"],
       "css": ["contentScript.css"],
-      "js": [
-        "contentScript.js"
-      ],
+      "js": ["contentScript.js"],
       "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": [
-        "asset.png", "icon.png"
-      ],
-      "matches": [
-        "<all_urls>"
-      ]
+      "resources": ["asset.png", "icon.png"],
+      "matches": ["<all_urls>"]
     }
   ]
 }
